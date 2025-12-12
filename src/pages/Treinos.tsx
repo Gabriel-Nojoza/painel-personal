@@ -1,45 +1,40 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../services/supabase";
+import { useNavigate } from "react-router-dom";
 import "../styles/treinos.css";
 
-/* ===============================
-   TIPOS (SEM CONFLITO)
-================================ */
-
-type UsuarioTreino = {
-  nome: string;
-};
-
+// ===============================
+// TIPAGEM CORRETA DO SUPABASE
+// ===============================
 type TreinoDB = {
   id: number;
   nome: string;
   dia: string | null;
   aluno_id: string | null;
-  usuarios: UsuarioTreino[] | null;
+  usuarios: {
+    nome: string;
+  }[];
 };
 
-/* ===============================
-   COMPONENTE
-================================ */
 
 export default function Treinos() {
   const [treinos, setTreinos] = useState<TreinoDB[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     carregarTreinos();
   }, []);
 
-  /* ===============================
-     CARREGAR TREINOS
-  ================================ */
+  // ===============================
+  // CARREGAR TREINOS
+  // ===============================
   async function carregarTreinos() {
     setLoading(true);
 
     const { data, error } = await supabase
       .from("treinos")
-      .select(
-        `
+      .select(`
         id,
         nome,
         dia,
@@ -47,10 +42,8 @@ export default function Treinos() {
         usuarios:aluno_id (
           nome
         )
-      `
-      )
-      .order("id", { ascending: false })
-      .returns<TreinoDB[]>(); // 🔥 ESSENCIAL PARA O BUILD
+      `)
+      .order("id", { ascending: false });
 
     if (error) {
       console.error("Erro ao carregar treinos:", error);
@@ -63,17 +56,41 @@ export default function Treinos() {
     setLoading(false);
   }
 
-  /* ===============================
-     RENDER
-  ================================ */
-  return (
-    <div className="page">
-      <h1 className="page-title">Treinos</h1>
+  // ===============================
+  // EXCLUIR TREINO
+  // ===============================
+  async function excluirTreino(id: number) {
+    if (!confirm("Deseja realmente excluir este treino?")) return;
 
-      {loading && <p>Carregando treinos...</p>}
+    await supabase
+      .from("treinos_exercicios")
+      .delete()
+      .eq("treino_id", id);
+
+    const { error } = await supabase
+      .from("treinos")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      alert("Erro ao excluir treino");
+      return;
+    }
+
+    carregarTreinos();
+  }
+
+  // ===============================
+  // RENDER
+  // ===============================
+  return (
+    <div className="treinos-page">
+      <h1 className="treinos-title">Treinos Cadastrados</h1>
+
+      {loading && <p className="loading-text">Carregando...</p>}
 
       {!loading && treinos.length === 0 && (
-        <p>Nenhum treino cadastrado.</p>
+        <p className="empty-text">Nenhum treino cadastrado ainda.</p>
       )}
 
       {!loading && treinos.length > 0 && (
@@ -88,8 +105,29 @@ export default function Treinos() {
 
               <p className="treino-info">
                 <b>Aluno:</b>{" "}
-                {treino.usuarios?.[0]?.nome ?? "Aluno não encontrado"}
+                {treino.usuarios.length > 0
+                  ? treino.usuarios[0].nome
+                  : "Aluno não encontrado"}
               </p>
+
+
+              <div className="acoes-card">
+                <button
+                  className="btn-editar"
+                  onClick={() =>
+                    navigate(`/treinos-editar/${treino.id}`)
+                  }
+                >
+                  Editar
+                </button>
+
+                <button
+                  className="btn-excluir"
+                  onClick={() => excluirTreino(treino.id)}
+                >
+                  Excluir
+                </button>
+              </div>
             </div>
           ))}
         </div>
