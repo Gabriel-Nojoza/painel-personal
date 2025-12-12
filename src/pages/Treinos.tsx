@@ -13,8 +13,9 @@ type TreinoDB = {
   aluno_id: string | null;
   usuarios: {
     nome: string;
-  } | null;
+  }[];
 };
+
 
 export default function Treinos() {
   const [treinos, setTreinos] = useState<TreinoDB[]>([]);
@@ -104,8 +105,11 @@ export default function Treinos() {
 
               <p className="treino-info">
                 <b>Aluno:</b>{" "}
-                {treino.usuarios?.nome || "Aluno não encontrado"}
+                {treino.usuarios.length > 0
+                  ? treino.usuarios[0].nome
+                  : "Aluno não encontrado"}
               </p>
+
 
               <div className="acoes-card">
                 <button
