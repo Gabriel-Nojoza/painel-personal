@@ -1,0 +1,169 @@
+/* ================================
+   BASE & CONTAINER
+================================ */
+.page.alunos-container {
+  padding: 40px;
+  font-family: "Inter", Arial, sans-serif;
+  color: #1f2937;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   TÍTULOS
+================================ */
+.alunos-container h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #111827;
+}
+
+.alunos-container h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 35px;
+  margin-bottom: 18px;
+  color: #374151;
+}
+
+/* ================================
+   FORMULÁRIO
+================================ */
+.aluno-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 35px;
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  transition: 0.3s ease;
+}
+
+.aluno-form:hover {
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+
+.aluno-form input {
+  padding: 12px 14px;
+  width: 240px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: 0.25s;
+}
+
+.aluno-form input:focus {
+  border-color: #2563eb;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.18);
+  outline: none;
+}
+
+/* ================================
+   BOTÕES
+================================ */
+
+.btn-primary {
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.30);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  padding: 8px 14px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 2px 6px rgba(239,68,68,0.2);
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* ================================
+   TABELA PROFISSIONAL
+================================ */
+.alunos-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+  margin-bottom: 50px;
+}
+
+.alunos-table th {
+  background: #111827;
+  color: white;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.alunos-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 15px;
+  color: #374151;
+}
+
+.alunos-table tbody tr:hover {
+  background: #f9fafb;
+  transition: 0.25s;
+}
+
+.alunos-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+@media (max-width: 768px) {
+  .page.alunos-container {
+    padding: 20px;
+  }
+
+  .aluno-form {
+    flex-direction: column;
+  }
+
+  .aluno-form input {
+    width: 100%;
+  }
+
+  .alunos-table {
+    font-size: 14px;
+  }
+}

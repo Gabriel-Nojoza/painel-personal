@@ -1,0 +1,255 @@
+/* ================================
+   PÁGINA PRINCIPAL
+================================ */
+.treino-editar-page {
+  padding: 32px;
+  background: #f8fafc;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ================================
+   HEADER
+================================ */
+.treino-editar-header {
+  margin-bottom: 24px;
+}
+
+.treino-editar-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.treino-editar-subtitle {
+  font-size: 15px;
+  color: #64748b;
+}
+
+/* ================================
+   BOTÃO ADICIONAR
+================================ */
+.btn-adicionar {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+  margin-bottom: 26px;
+}
+
+.btn-adicionar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+}
+
+/* ================================
+   TEXTO VAZIO
+================================ */
+.empty-text {
+  color: #64748b;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+/* ================================
+   GRID DE EXERCÍCIOS
+================================ */
+.exercicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* ================================
+   CARD DO EXERCÍCIO
+================================ */
+.exercicio-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+.exercicio-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
+/* ================================
+   INFO EXERCÍCIO
+================================ */
+.exercicio-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.exercicio-nome {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.exercicio-musculo {
+  font-size: 13px;
+  color: #22c55e;
+  margin-top: 2px;
+}
+
+/* ================================
+   AÇÕES
+================================ */
+.exercicio-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-remover {
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-remover:hover {
+  background: #fecaca;
+}
+
+/* ================================
+   LOADING
+================================ */
+.loading {
+  padding: 40px;
+  font-size: 16px;
+  color: #64748b;
+}
+
+/* ================================
+   MODAL OVERLAY
+================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* ================================
+   MODAL CARD
+================================ */
+.modal-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  animation: modalFade 0.25s ease;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================================
+   MODAL TÍTULO
+================================ */
+.modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+/* ================================
+   LISTA MODAL
+================================ */
+.modal-exercicios {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 320px;
+  overflow-y: auto;
+  margin-bottom: 18px;
+}
+
+.modal-exercicio-btn {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-exercicio-btn:hover:not(:disabled) {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+}
+
+.modal-exercicio-btn:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* ================================
+   BOTÃO FECHAR
+================================ */
+.modal-close {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #e5e7eb;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #cbd5f5;
+}
+
+/* ================================
+   RESPONSIVO
+================================ */
+@media (max-width: 640px) {
+  .treino-editar-page {
+    padding: 20px;
+  }
+
+  .treino-editar-title {
+    font-size: 22px;
+  }
+}

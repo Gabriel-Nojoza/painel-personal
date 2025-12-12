@@ -1,0 +1,435 @@
+/* ============================= */
+/*      TÍTULOS E SEÇÕES        */
+/* ============================= */
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 22px;
+  color: var(--text-dark);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 26px 0 14px;
+  color: var(--text-dark);
+}
+
+/* ============================= */
+/*         FORMULÁRIO           */
+/* ============================= */
+
+.ex-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+}
+
+.ex-form input,
+.file-label {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.ex-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+  outline: none;
+}
+
+.file-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ============================= */
+/*           LISTA              */
+/* ============================= */
+
+.ex-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+  margin-top: 12px;
+}
+
+/* ============================= */
+/*             CARD             */
+/* ============================= */
+
+.ex-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  transition: 0.25s ease;
+}
+
+.ex-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+
+/* Cabeçalho do card */
+.ex-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.ex-header span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ============================= */
+/*          MÍDIAS              */
+/* ============================= */
+
+.ex-media-wrapper {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.ex-img,
+.ex-video {
+  flex: 1;
+  height: 150px;                /* diminuído */
+  border-radius: var(--radius);
+  object-fit: cover;
+  border: 1px solid var(--card-border);
+  background: #f1f5f9;
+  box-shadow: var(--shadow);
+}
+
+/* Vídeo com bordas arredondadas */
+.ex-video {
+  object-fit: cover;
+}
+
+/* ============================= */
+/*          BOTÕES              */
+/* ============================= */
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  width: 100%;
+}
+
+.btn-danger:hover {
+  opacity: 0.9;
+}
+
+/* ===================================================== */
+/*                     MODAL TREINO                     */
+/* ===================================================== */
+
+.page-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.btn-small {
+  width: auto;
+  padding-inline: 16px;
+  font-size: 14px;
+}
+
+/* Fundo escuro */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* Card do modal */
+.modal-card {
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px 24px 18px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.4);
+  display: flex;
+  flex-direction: column;
+  animation: modalIn 0.18s ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0 4px;
+}
+
+.modal-close:hover {
+  color: #111827;
+}
+
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* GRID DO CABEÇALHO DO TREINO */
+.treino-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.treino-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.treino-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.treino-field input,
+.treino-field select {
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 10px 12px;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: 0.18s ease;
+}
+
+.treino-field input:focus,
+.treino-field select:focus {
+  outline: none;
+  border-color: var(--primary, #2563eb);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+  background: #ffffff;
+}
+
+.field-hint {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Seções internas do modal */
+.modal-section {
+  margin-top: 18px;
+}
+
+.modal-section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.section-help {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+/* LISTA DE EXERCÍCIOS NO MODAL */
+.treino-ex-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.treino-ex-card {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 8px 10px;
+  background: #f9fafb;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: 0.18s ease;
+}
+
+.treino-ex-card:hover {
+  border-color: var(--primary, #2563eb);
+  background: #eef2ff;
+}
+
+.treino-ex-card.selected {
+  border-color: var(--primary, #2563eb);
+  background: #e0edff;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+}
+
+.treino-ex-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.treino-ex-musculo {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* TABELA DE DETALHES DO TREINO */
+.treino-itens-table {
+  margin-top: 10px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  overflow: hidden;
+}
+
+.treino-itens-header,
+.treino-itens-row {
+  display: grid;
+  grid-template-columns: 1.7fr repeat(4, 0.7fr);
+  gap: 6px;
+  padding: 8px 10px;
+  align-items: center;
+}
+
+.treino-itens-header {
+  background: #e5e7eb;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #4b5563;
+}
+
+.treino-itens-row:nth-child(odd) {
+  background: #f9fafb;
+}
+
+.treino-itens-row:nth-child(even) {
+  background: #f3f4f6;
+}
+
+.treino-item-nome {
+  font-size: 13px;
+  color: #111827;
+}
+
+.treino-itens-row input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 6px 8px;
+  font-size: 13px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.treino-itens-row input:focus {
+  outline: none;
+  border-color: var(--primary, #2563eb);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2);
+}
+
+/* Rodapé do modal */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-radius: var(--radius, 12px);
+  border: 1px solid #e5e7eb;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #4b5563;
+  transition: 0.18s ease;
+}
+
+.btn-ghost:hover {
+  background: #f3f4f6;
+}
