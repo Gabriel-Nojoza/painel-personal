@@ -4,16 +4,14 @@ import { useNavigate } from "react-router-dom";
 import "../styles/treinos.css";
 
 // ===============================
-// TIPAGEM CORRETA
+// TIPAGEM FINAL
 // ===============================
 type TreinoDB = {
   id: number;
   nome: string;
   dia: string | null;
   aluno_id: string | null;
-  usuarios: {
-    nome: string;
-  }[];
+  aluno_nome?: string | null;
 };
 
 export default function Treinos() {
@@ -26,32 +24,43 @@ export default function Treinos() {
   }, []);
 
   // ===============================
-  // CARREGAR TREINOS
+  // CARREGAR TREINOS + ALUNOS
   // ===============================
   async function carregarTreinos() {
     setLoading(true);
 
-    const { data, error } = await supabase
-      .from("treinos")
-      .select(`
-        id,
-        nome,
-        dia,
-        aluno_id,
-        usuarios:usuarios!treinos_aluno_id_fkey (
-          nome
-        )
-      `)
-      .order("id", { ascending: false });
+    // 1️⃣ Buscar treinos
+    const { data: treinosData, error: erroTreinos } =
+      await supabase
+        .from("treinos")
+        .select("id, nome, dia, aluno_id")
+        .order("id", { ascending: false });
 
-    if (error) {
-      console.error("Erro ao carregar treinos:", error);
+    if (erroTreinos || !treinosData) {
+      console.error("Erro ao carregar treinos:", erroTreinos);
       setTreinos([]);
       setLoading(false);
       return;
     }
 
-    setTreinos((data ?? []) as TreinoDB[]);
+    // 2️⃣ Buscar alunos
+    const { data: usuariosData } = await supabase
+      .from("usuarios")
+      .select("id, nome");
+
+    // 3️⃣ Mapear nome do aluno no treino
+    const treinosComAluno = treinosData.map((treino) => {
+      const aluno = usuariosData?.find(
+        (u) => u.id === treino.aluno_id
+      );
+
+      return {
+        ...treino,
+        aluno_nome: aluno?.nome ?? null,
+      };
+    });
+
+    setTreinos(treinosComAluno);
     setLoading(false);
   }
 
@@ -104,7 +113,7 @@ export default function Treinos() {
 
               <p className="treino-info">
                 <b>Aluno:</b>{" "}
-                {treino.usuarios?.[0]?.nome ?? "Aluno não encontrado"}
+                {treino.aluno_nome ?? "Aluno não encontrado"}
               </p>
 
               <div className="acoes-card">
