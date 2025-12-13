@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/treinos.css";
 
 // ===============================
-// TIPAGEM CORRETA DO SUPABASE
+// TIPAGEM CORRETA
 // ===============================
 type TreinoDB = {
   id: number;
@@ -13,7 +13,7 @@ type TreinoDB = {
   aluno_id: string | null;
   usuarios: {
     nome: string;
-  }[]; // relacionamento vem como ARRAY
+  }[];
 };
 
 export default function Treinos() {
@@ -51,8 +51,7 @@ export default function Treinos() {
       return;
     }
 
-    // ✅ CORREÇÃO PRINCIPAL (sem erro de TS)
-    setTreinos((data as TreinoDB[]) ?? []);
+    setTreinos((data ?? []) as TreinoDB[]);
     setLoading(false);
   }
 
@@ -107,7 +106,6 @@ export default function Treinos() {
                 <b>Aluno:</b>{" "}
                 {treino.usuarios?.[0]?.nome ?? "Aluno não encontrado"}
               </p>
-
 
               <div className="acoes-card">
                 <button
