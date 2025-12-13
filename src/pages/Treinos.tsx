@@ -13,9 +13,8 @@ type TreinoDB = {
   aluno_id: string | null;
   usuarios: {
     nome: string;
-  }[];
+  }[]; // relacionamento vem como ARRAY
 };
-
 
 export default function Treinos() {
   const [treinos, setTreinos] = useState<TreinoDB[]>([]);
@@ -39,7 +38,7 @@ export default function Treinos() {
         nome,
         dia,
         aluno_id,
-        usuarios (
+        usuarios:aluno_id (
           nome
         )
       `)
@@ -52,7 +51,8 @@ export default function Treinos() {
       return;
     }
 
-    setTreinos(data ?? []);
+    // ✅ CORREÇÃO PRINCIPAL (sem erro de TS)
+    setTreinos((data as TreinoDB[]) ?? []);
     setLoading(false);
   }
 
@@ -105,9 +105,7 @@ export default function Treinos() {
 
               <p className="treino-info">
                 <b>Aluno:</b>{" "}
-                {treino.usuarios.length > 0
-                  ? treino.usuarios[0].nome
-                  : "Aluno não encontrado"}
+                {treino.usuarios?.[0]?.nome ?? "Aluno não encontrado"}
               </p>
 
 
