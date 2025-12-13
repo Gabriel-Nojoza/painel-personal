@@ -38,7 +38,7 @@ export default function Treinos() {
         nome,
         dia,
         aluno_id,
-        usuarios:aluno_id (
+        usuarios:usuarios!treinos_aluno_id_fkey (
           nome
         )
       `)
