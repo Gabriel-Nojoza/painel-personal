@@ -227,10 +227,16 @@ export default function Exercicios() {
         exercicio_id: item.exercicio_id,
         series: Number(item.series) || null,
         repeticoes: Number(item.repeticoes) || null,
-        descanso: Number(item.descanso) || null,
+
+        // 🔥 CONVERSÃO CORRETA
+        descanso: item.descanso
+          ? Number(item.descanso) * 60
+          : null,
+
         carga: Number(item.carga) || null,
         ordem: index + 1,
       }));
+
 
       await supabase.from("treinos_exercicios").insert(payload);
 
