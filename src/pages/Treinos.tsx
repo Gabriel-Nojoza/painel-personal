@@ -39,7 +39,7 @@ export default function Treinos() {
         nome,
         dia,
         aluno_id,
-        usuarios:aluno_id (
+        usuarios (
           nome
         )
       `)
